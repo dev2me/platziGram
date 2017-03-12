@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
+var babel = require('babelify');
+var browserify = require('browserify');
+var preset =  require('babel-preset-es2015');
 
 gulp.task('styles', function() {
   gulp
@@ -15,6 +18,13 @@ gulp.task('assets', function() {
       .pipe(gulp.dest('public'));
 });
 
-gulp.task('default', ['assets','styles']);
+gulp.task('scripts', function() {
+  browerify('./src/index.js')
+  .transform(babel, preset)
+  .bundle()
+  .pipe(souce('index.js'))
+})
+
+gulp.task('default', ['assets','styles', 'scripts']);
 
 
