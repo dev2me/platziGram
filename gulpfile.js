@@ -21,10 +21,12 @@ gulp.task('assets', function() {
 });
 
 gulp.task('scripts', function() {
-  browerify('./src/index.js')
+  browserify('./src/index.js')
   .transform(babel, preset)
   .bundle()
   .pipe(source('index.js'))
+  .pipe(rename('app.js'))
+  .pipe(gulp.dest('public'));
 })
 
 gulp.task('default', ['assets','styles', 'scripts']);
