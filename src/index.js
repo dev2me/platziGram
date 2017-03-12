@@ -1,8 +1,15 @@
-var numeros = [10, 20, 50, 100, 300];
+var page = require('page');
 
-var numers = numeros.map( (n) => {
-  return n + 1;
+var main = document.getElementById('main-container');
+
+page('/', (ctx, nxt) => {
+  // home 
+ // main.innerHTML = "Home";
 })
 
-console.log(numers);
+page('/signup', (ctx, nxt) => {
+ main.innerHTML = "sesion";
+})
 
+
+page();
