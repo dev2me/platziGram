@@ -20,6 +20,7 @@
     "gulp": "^3.9.1",
     "gulp-sass": "^2.3.2",
     "materialize-css": "^0.97.7",
+    "page": "^1.7.1",
     "pug": "^2.0.0-beta11"
   },
   "devDependencies": {
