@@ -5,7 +5,7 @@ var babel = require('babelify');
 var browserify = require('browserify');
 var preset =  require('babel-preset-es2015');
 var source = require('vinyl-source-stream');
-
+var watchify = require("watchify");
 
 gulp.task('styles', function() {
   gulp
