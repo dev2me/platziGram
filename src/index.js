@@ -8,7 +8,7 @@ page('/', (ctx, nxt) => {
 })
 
 page('/signup', (ctx, nxt) => {
- main.innerHTML = "sesion";
+ main.innerHTML = "Si existe";
 })
 
 

@@ -20,15 +20,34 @@ gulp.task('assets', function() {
       .pipe(gulp.dest('public'));
 });
 
-gulp.task('scripts', function() {
-  browserify('./src/index.js')
-  .transform(babel, preset)
-  .bundle()
-  .pipe(source('index.js'))
-  .pipe(rename('app.js'))
-  .pipe(gulp.dest('public'));
-})
+function compile(watch) {
+  var bundle = watchify(browserify('./src/index.js', {debug: true}));
+  function rebundle() {
+    bundle
+    .transform(babel, preset)
+    .bundle()
+    .pipe(source('index.js'))
+    .pipe(rename('app.js'))
+    .pipe(gulp.dest('public'));
+  }
 
-gulp.task('default', ['assets','styles', 'scripts']);
+  if(watch) {
+    bundle.on('update', function() {
+      console.log('--> Bundling...');
+      rebundle();
+    });
+  }
+
+  rebundle();
+}
+gulp.task('build', function() {
+  return compile();
+});
+
+gulp.task('watch', function() {
+  return compile(true);
+});
+
+gulp.task('default', ['assets','styles', 'build']);
 
 
