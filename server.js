@@ -12,7 +12,7 @@ app.get("/", function(req, res) {
 app.get("/signup", function(req, res) {
 	res.render('index')
 });
-app.get("/sigin", function(req, res) {
+app.get("/signin", function(req, res) {
 	res.render('index')
 });
 
